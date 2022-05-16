@@ -1,0 +1,76 @@
+{ "id": "appid",              // 7 character app id
+  "name": "Readable name",    // readable name
+  "shortName": "Short name",  // short name for launcher
+  "version": "0v01",          // the version of this app
+  "description": "...",       // long description (can contain markdown)
+  "icon": "icon.png",         // icon in apps/
+  "screenshots" : [ { "url":"screenshot.png" } ], // optional screenshot for app
+  "type":"...",               // optional(if app) -  
+                              //   'app' - an application
+                              //   'clock' - a clock - required for clocks to automatically start
+                              //   'widget' - a widget
+                              //   'bootloader' - an app that at startup (app.boot.js) but doesn't have a launcher entry for 'app.js'
+                              //   'RAM' - code that runs and doesn't upload anything to storage
+                              //   'launch' - replacement 'Launcher'
+                              //   'textinput' - provides a 'textinput' library that allows text to be input on the Bangle
+                              //   'scheduler' - provides 'sched' library and boot code for scheduling alarms/timers
+                              //                 (currently only 'sched' app)
+                              //   'notify' - provides 'notify' library for showing notifications
+                              //   'locale' - provides 'locale' library for language-specific date/distance/etc
+                              //              (a version of 'locale' is included in the firmware)
+  "tags": "",                 // comma separated tag list for searching
+  "supports": ["BANGLEJS2"],  // List of device IDs supported, either BANGLEJS or BANGLEJS2
+  "dependencies" : { "notify":"type" } // optional, app 'types' we depend on (see "type" above)
+  "dependencies" : { "messages":"app" } // optional, depend on a specific app ID
+                              // for instance this will use notify/notifyfs is they exist, or will pull in 'notify'
+  "readme": "README.md",      // if supplied, a link to a markdown-style text file
+                              // that contains more information about this app (usage, etc)
+                              // A 'Read more...' link will be added under the app
+
+  "custom": "custom.html",    // if supplied, apps/custom.html is loaded in an
+                              // iframe, and it must post back an 'app' structure
+                              // like this one with 'storage','name' and 'id' set up
+                              // see below for more info
+
+  "customConnect": true,      // if supplied, ensure we are connected to a device
+                              // before the "custom.html" iframe is loaded. An
+                              // onInit function in "custom.html" is then called
+                              // with info on the currently connected device.                 
+
+  "interface": "interface.html",   // if supplied, apps/interface.html is loaded in an
+                              // iframe, and it may interact with the connected Bangle
+                              // to retrieve information from it
+                              // see below for more info
+
+  "allow_emulator":true,      // if 'app.js' will run in the emulator, set to true to
+                              // add an icon to allow your app to be tested
+
+  "storage": [                // list of files to add to storage
+    {"name":"appid.js",       // filename to use in storage.
+                              // If name=='RAM', the code is sent directly to Bangle.js and is not saved to a file
+     "url":"",                // URL of file to load (currently relative to apps/)
+     "content":"...",         // if supplied, this content is loaded directly
+     "evaluate":true,         // if supplied, data isn't quoted into a String before upload
+                              // (eg it's evaluated as JS)
+     "noOverwrite":true       // if supplied, this file will not be overwritten if it
+                              // already exists
+     "supports": ["BANGLEJS2"]// if supplied, this file will ONLY be uploaded to the device
+                              // types named in the array. This allows different versions of
+                              // the app to be uploaded for different platforms
+    },
+  ]
+  "data": [                   // list of files the app writes to
+    {"name":"appid.data.json",  // filename used in storage
+     "storageFile":true       // if supplied, file is treated as storageFile
+     "url":"",                // if supplied URL of file to load (currently relative to apps/)
+     "content":"...",         // if supplied, this content is loaded directly     
+     "evaluate":true,         // if supplied, data isn't quoted into a String before upload
+                              // (eg it's evaluated as JS)     
+    },
+    {"wildcard":"appid.data.*" // wildcard of filenames used in storage
+    },                         // this is mutually exclusive with using "name"
+  ],
+  "sortorder" : 0,            // optional - choose where in the list this goes.
+                              // this should only really be used to put system
+                              // stuff at the top
+}
