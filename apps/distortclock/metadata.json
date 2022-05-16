@@ -1,4 +1,4 @@
-{ "id": "distort",
+{ "id": "distortclock",
   "name": "Distort Clock",
   "shortName": "distortclk",
   "version": "0v01",       
@@ -10,7 +10,7 @@
   "readme": "README.md",
   "allow_emulator":true,
   "storage": [
-    {"name":"distort.js",
+    {"name":"distortclock.js",
      "evaluate":true,
      "supports": ["BANGLEJS2"]
     }
