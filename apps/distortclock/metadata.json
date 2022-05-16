@@ -1,7 +1,7 @@
 { "id": "distortclock",
   "name": "Distort Clock",
   "shortName": "distortclk",
-  "version": "0:01",       
+  "version": "0.01",       
   "description": "...",
   "icon": "distortclock.png",
   "type":"clock",
