@@ -3,7 +3,7 @@
   "shortName": "distortclk",
   "version": "0.01",       
   "description": "...",
-  "icon": "distortclock.png",
+  "icon": "app-icon.png",
   "type":"clock",
   "tags":"clock",
   "supports": ["BANGLEJS2"],
